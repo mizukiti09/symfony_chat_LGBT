@@ -10,3 +10,9 @@ when@prod:
     framework:
         router:
             strict_requirements: null
+
+# contribute/page: 
+#     pattern:  /contribute/page?page={id}
+#     defaults: { _controller: App\Controller:Contribute:page }
+#     requirements:
+#         _method:  GET

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+
+
+{% block body %}
+<style>
+body {
+  position: relative;
+  display: block;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+</style>
+<p class="user-state">{{ user }}</p>
+
+<div class="main-title">
+  <a href="{{ path('contribute/page/area') }}">
+  <img  src="{{ asset('images/logo.png') }}" alt="">
+  </a>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,234 @@
+@import "~bootstrap/scss/bootstrap";
+
+/* A Modern CSS Reset */
+ 
+*,*::before,*::after{box-sizing:border-box}body,h1,h2,h3,h4,p,figure,blockquote,dl,dd{margin:0}ul[role="list"],ol[role="list"]{list-style:none}html:focus-within{scroll-behavior:smooth}body{min-height:100vh;text-rendering:optimizeSpeed;line-height:1.5}a:not([class]){text-decoration-skip-ink:auto}img,picture{max-width:100%;display:block}input,button,textarea,select{font:inherit}@media(prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
+
+
+$font-base-color:#fff;
+
+.js-click-zero {
+  background: #0b5ed7;
+}
+.js-click-zero.isActive {
+  background: #198754;
+}
+
+
+
+body {
+  color: $font-base-color;
+  display: flex;
+  flex-flow: column;
+}
+.main {
+  width: 80%;
+  margin: 100px auto;
+  &-title {
+    position: absolute;
+    top: 45%;
+    left: 53%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+}
+@media (max-width: 768px){
+  .main-title h1 {
+    font-size: 25px;
+  }
+}
+
+// ナビゲーション
+.navbar {
+  padding: 0 10px;
+}
+
+.header-logo {
+  width: 120px;
+}
+
+.user-state {
+  color: $font-base-color;
+  padding: 20px 20px 0 20px;
+}
+
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+  & button {
+    float: right;
+    margin-top: 5px;
+  }
+}
+.error {
+  color: red;
+}
+
+
+
+.title-text {
+  text-align: center;
+}
+
+// ユーザー情報
+.user-info {
+  &-img {
+    position: relative;
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    background: gray;
+    & input {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+    & img {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+  &-move-link {
+    text-align: center;
+    border: 2px solid rgb(0, 255, 255);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+
+.container {
+  margin: 20px auto;
+  min-height: 100vh;
+}
+
+// 投稿関係
+.contribute {
+  
+  &-item {
+    border: 2px solid rgb(0, 255, 255);
+    padding: 22px 26px;
+  }
+  &-menu {
+    border: 2px solid rgb(0, 255, 255);
+    display: flex;
+    justify-content: space-around;
+    & a {
+      color: #fff;
+      transition: .3s;
+      &:hover {
+        transition: .3s;
+        color: rgb(0, 255, 255);;
+      }
+    }
+  }
+  &-img {
+    width: 225px;
+    height: 160px;
+    overflow: hidden;
+    margin-right: 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &-float-left {
+    display: flex;
+    width: auto;
+  }
+  &-mb {
+    margin-bottom: 18px;
+  }
+}
+
+
+.msg {
+  position: relative;
+  margin-bottom: 30px;
+  &-scroll {
+    height: 73vh;
+    overflow: scroll;
+    @media (max-width: 991px) {
+      height: 72vh;
+    }
+  }
+  &-left {
+    position: relative;
+    .msg-text {
+      max-width: 289px;
+      top: -38px;
+      left: 65px;
+      position: relative;
+      .msg-date {
+        position: absolute;
+        left: 0;
+        bottom: -25px;
+      }
+    }
+  }
+  &-right {
+    position: relative;
+    width: 100%;
+    // min-height: 23px;
+    display: inline-block;
+    .msg-text {
+      float: right;
+      .msg-date {
+        position: absolute;
+        right: 0;
+        bottom: -25px;
+      }
+    }
+    @media (max-width: 768px){
+      .msg-text {
+        right: 3px;
+      }
+    }
+  }
+  
+
+  &-send {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+  }
+  &-textarea {
+    width: 100%;
+  }
+  &-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &-text {
+    background: rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    padding: 4px;
+    border-radius: 10px;
+    max-width: 560px;
+  }
+  
+}
+
+.footer {
+  height: 50px;
+  width: 100vw;
+  
+  overflow: hidden;
+  &-inner {
+    line-height: 50px;
+    text-align: center;
+  }
+}
