@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+  <div class="main">
+  <h3 class="user-state">UserName：{{ user }}</h3>
+  <form name="contribute" method="post" class="form">
+  {{ form_label(form.area) }}
+  {{ form_widget(form.area) }}
+  <div class="t_button">
+      {{ form_widget(form.register,{'label':'検索'}) }}
+    </div>
+  </form>
+  </div>
+{% endblock %}

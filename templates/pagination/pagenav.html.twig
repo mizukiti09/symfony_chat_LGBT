@@ -1,0 +1,91 @@
+<style>
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+.this {
+  background: rgba(255,255,255,0.5);
+}
+.row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-top: var(--bs-gutter-y);
+}
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border: 2px solid cyan;
+  display: flex;
+  justify-content: center;
+}
+.page-link {
+  position: relative;
+  display: block;
+  padding: 7px 10px;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #fff;
+  background: none;
+  border: 1px solid #aaf;
+}
+.page-link:hover {
+  z-index: 2;
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  blorder-color: #aaf;
+}
+
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.page-item:last-child .page-link {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+</style>
+
+
+{% if maxPages > 1 %}
+  <ul class="pagination">
+    <li class="page-item">
+      <a href=" {{ path('contribute/page/area', {page:1, area: area}) }} " class="page-link"> |《</a>
+    </li>
+    <li class="page-item">
+      <a href=" {{ path('contribute/page/area', {page: thisPage - 1 < 1 ? 1 : thisPage - 1, area: area}) }} " class="page-link">《</a>
+    </li>
+    
+    
+    {% for i in ( thisPage - 1)..(thisPage + 1) %}
+    {% if i > 0 %}
+    {% if i <= maxPages %}
+    {% if i == thisPage %}
+    <li class="page-item this">
+      <a href=" {{ path('contribute/page/area', {page: i, area: area}) }} " class="page-link"> {{ i }} </a>
+    </li>
+    {% else %}
+      <li class="page-item">
+      <a href=" {{ path('contribute/page/area', {page: i, area: area}) }} " class="page-link"> {{ i }} </a>
+    </li>
+    {% endif %}
+  
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+
+    <li class="page-item">
+      <a href=" {{ path('contribute/page/area', {page: thisPage + 1 <= maxPages ? thisPage + 1 : thisPage, area: area}) }} " class="page-link">》</a>
+    </li>
+
+    <li class="page-item">
+      <a href=" {{ path('contribute/page/area', {page: maxPages, area: area}) }} " class="page-link">》|</a>
+    </li>
+  </ul>
+{% endif %}
