@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+
+
+{% block body %}
+
+<style>
+.main {
+  margin: 10px auto;
+}
+@media (max-width: 768px){
+  .main {
+    width: 95%;
+  }
+}
+body {
+  position: relative;
+  display: block;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+</style>
+<div class="main">
+  <div class="msg-scroll">
+
+  
+  {% for msg in data %}
+
+    
+    
+    
+
+
+    {% if msg.from_user_id != user_id %}
+      {# メッセージ左側　相手 #}
+    <div class="msg msg-left">
+      <div class="msg-avatar" style="background-image:url('{{ asset('uploads/images/' ~ msg.image) }}')">
+      </div>
+      <p class="msg-text">
+        <span class="triangle"></span>
+        {{ msg.message }}
+        <span class="msg-date">{{msg.createdAt.format('m-d  H:i')}}</span>
+      </p>
+    </div>
+    {% else %}
+      {# メッセージ右側　自分 #}
+    <div class="msg msg-right">
+      <p class="msg-text">
+        <span class="triangle"></span>
+        {{ msg.message }}
+        <span class="msg-date">{{msg.createdAt.format('m-d H:i')}}</span>
+      </p>
+    </div>
+    {% endif %}
+  {% endfor %}
+    
+
+  </div>
+  <div class="msg-send">
+      <form name="message" method="post" class="form">
+        {{ form_widget(form.message, { 'value': '' }) }}
+         {{ form_widget(form.register) }}
+      </form>
+    </div>
+</div>
+{% endblock %}

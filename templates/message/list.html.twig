@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+
+
+{% block body %}
+
+<style>
+</style>
+<div class="container">
+  
+  {% for key,c_data in myContributeData %}
+  {# 大元 #}
+  <p>
+  <button class="btn btn-primary js-click-zero" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample00{{key}}" aria-expanded="false" aria-controls="multiCollapseExample00{{key}}" >{{ c_data.textarea }}</button>
+  </p>
+  <br>
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample00{{key}}">
+
+  {% for m_key,m_data in myMsgData %}
+    {% if c_data.id == m_data.message_contribute_id and m_data.from_user_id != user_id %}
+      {# 相手 #}
+  
+  <p>
+    
+    
+    <button class="btn btn-primary js-click-zero" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample{{m_key}}" aria-expanded="false" aria-controls="multiCollapseExample{{m_key}}"> {{m_data.username}} </button>
+  </p>
+  
+
+  {# 相手からのメッセージ #}
+  
+      <div class="row" style="color: black;">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample{{m_key}}">
+            <div class="card card-body">
+              <a href="{{ path('message', {'bord_id': m_data.bord_id, 'contribute_id': m_data.message_contribute_id, 'contribute_user_id': m_data.contribute_user_id}) }}">{{ m_data.message }}</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+    {% endif %}
+  {% endfor %}
+  
+     </div>
+   </div>
+  {% endfor %}
+  </div>
+  <br>
+  <br>
+  
+  
+  
+
+
+
+
+{% block javascripts %}
+<script>
+$('.js-click-zero').on('click', function(){
+  $(this).toggleClass('isActive');
+}); 
+</script>
+{% endblock javascripts %}
+{% endblock body %}
+
