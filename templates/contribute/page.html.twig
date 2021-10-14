@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+
+
+{% block body %}
+
+
+
+<p class="user-state">{{ user }}</p>
+
+
+<style>
+.col-12 {
+  width: auto;
+}
+</style>
+<div class="container">
+  
+  <div class="row col-12">
+    <div class="col-10 contribute">
+      {% for data in contribute_page %}
+        <div class="contribute-item">
+          <div class="row contribute-mb">
+            <p>{{ data.updatedAt.format('Y-m-d H:i:s') }}</p>
+
+
+            <div class="col-8 col-sm-6 contribute-float-left">
+
+              <div class="contribute-img">
+                <img  src="{{ asset('uploads/images/' ~ data.image) }}" alt="">
+              </div>
+              
+              
+              <div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  メッセージ
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <span style="color: #6c757d">こちらの投稿者にメッセージを送りますか？</span>
+                      </div>
+                      <div class="modal-footer">
+                        
+                        
+                        <form name="" method="post">
+                          <input type="hidden" name="contribute_id" value="{{data.contribute_id}}">
+                          <input type="hidden" name="contribute_user_id" value="{{data.user_id}}"> 
+                           <input class="btn btn-primary" type="submit" value="はい"> 
+                        </form>
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {# <a href="{{ path('message_prev', {'contribute_id': data.contribute_id, 'contribute_user_id': data.user_id}) }}">メッセージ</a> #}
+                <p>名前：{{ data.username }} </p>
+                <p>年齢：{{ data.age }}</p>
+                <p>性別：{{ data.sex }}</p>
+                <p>ルックス：{{ data.look }}</p>
+              </div>
+            
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+            <p>本文：</p>
+            <p>{{ data.textarea }}</p>
+          </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      {% include 'pagination/pagenav.html.twig' with [thisPage, maxPages, area] %}
+    </div>
+
+    
+  </div>
+</div>
+
+{% endblock %}
