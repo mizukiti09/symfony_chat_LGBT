@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+
+{% block body %}
+<style>
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+</style>
+  <div class="main">
+  <h3 class="user-state">UserName：{{ user }}</h3>
+    <h1 class="title-text" style="margin-top: 55px;">■投稿■</h1>
+      {{ form_start(form, {'attr': {'class': 'form'}}) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+  </div>
+  
+ 
+
+{% endblock %}
