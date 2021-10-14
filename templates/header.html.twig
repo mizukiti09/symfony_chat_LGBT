@@ -11,7 +11,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {# ============= #}
         {% if user_id is not same as 0 %}
-          {# <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               メッセージ一覧
             </a>
@@ -22,7 +22,7 @@
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{{ path('message_list_guest', {'user_id': user_id }) }}">ゲスト用メッセージリスト</a></li>
             </ul>
-          </li> #}
+          </li>
         {% endif %}
         
       {# ============== #}
@@ -45,9 +45,9 @@
           <a class="nav-link" href="{{ path("my_info", {"id": userData.id }) }}">ユーザー情報</a>
         </li> #}
         {% endif %}
-        {# <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="{{ path('contribute_create') }}">投稿</a>
-        </li> #}
+        </li>
 
       </ul>
       {% if app.request.attributes.get('_route') in [

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+
+
+{% block body %}
+
+<div class="container">
+  {% for w_key,w_data in guestWhichContributeData %}
+    
+    {% if w_data.contribute_user_id is same as(user_id) %}
+    {% else %}
+      
+      
+  {# 大元 #} 
+  <p>
+  <button class="btn btn-primary js-click-zero" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample00{{w_key}}" aria-expanded="false" aria-controls="multiCollapseExample00{{w_key}}" >{{ w_data.textarea }}</button>
+  </p>
+  <br>
+ 
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample00{{w_key}}">
+
+    {% for key,g_data in myMsgGuestData %}
+      {# 相手 #}
+      {% if g_data.contribute_user_id is same as w_data.contribute_user_id and g_data.message_contribute_id is same as w_data.message_contribute_id %}
+  
+  <p>
+    <button class="btn btn-primary js-click-zero" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample{{key}}" aria-expanded="false" aria-controls="multiCollapseExample{{key}}"> {{g_data.username}} </button>
+  </p>
+  
+
+  {# 相手からのメッセージ #}
+  
+    <div class="row" style="color: black;">
+      <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample{{key}}">
+          <div class="card card-body">
+            <a href="{{ path('message', {'bord_id': g_data.bord_id, 'contribute_id': g_data.message_contribute_id, 'contribute_user_id': g_data.contribute_user_id}) }}">{{ g_data.message }}</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    {% endif %}
+   {% endfor %}
+  
+  </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+  
+  
+  
+
+
+
+
+{% block javascripts %}
+<script>
+$('.js-click-zero').on('click', function(){
+  $(this).toggleClass('isActive');
+}); 
+</script>{% endblock %}
+{% endblock %}
+
