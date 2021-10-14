@@ -41,9 +41,9 @@
 
         {% if userData == null %}
         {% else %}
-        {# <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="{{ path("my_info", {"id": userData.id }) }}">ユーザー情報</a>
-        </li> #}
+        </li>
         {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="{{ path('contribute_create') }}">投稿</a>
