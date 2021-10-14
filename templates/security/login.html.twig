@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+
+{% block page %} Login {% endblock %}
+{% block title %} Login {% endblock %}
+
+
+{% block body %}
+<style>
+body {
+  position: relative;
+  display: block;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+</style>
+  <div class="main">
+    <p class="user-state"> {{ user }} </p>
+    <h1 class="title-text">Login</h1>
+    {% if error %}
+      <div class="error"> {{ error.messageKey }} </div>
+    {% endif %}
+    <form action=" {{ path('login') }} " method="post" class="form">
+    <label for="username">UserName:</label>
+    <input type="text" class="form-control" id="username" name="username" />
+        
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" name="password" />
+        <button type="submit" class="btn btn-outline-secondary">login</button>
+    </form>
+  </div>
+
+{% endblock %}
+

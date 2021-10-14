@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        
+        <form name="enquete" method="post" class="form" enctype="multipart/form-data">
+        <label for="form_image" class="required">画像</label>
+        <div class="user-info-img">
+          
+          <div class="msg-avatar" style="background-image:url('{{ asset('uploads/images/' ~ data.image) }}'); width: 100%; height: 100%;">
+          </div>
+          
+          {# <input type="file" id="form_image" name="form[image]" > #}
+        </div>
+
+        {{ form_label(form.image) }}
+        {{ form_widget(form.image) }} 
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username) }} 
+        {{ form_label(form.sex) }}
+        {{ form_widget(form.sex) }} 
+        {{ form_label(form.age) }}
+        {{ form_widget(form.age) }} 
+        {{ form_label(form.area) }}
+        {{ form_widget(form.area) }} 
+        {{ form_label(form.look) }}
+        {{ form_widget(form.look) }} 
+        {{ form_widget(form.register) }}
+        </form>
+       
+        
+
+      </div>
+
+      
+    </div>
+  </div>
+{% endblock %}

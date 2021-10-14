@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+
+  <div class="main">
+    <h1 class="title-text">Profiel</h1>
+      {{ form_start(form, {'attr': {'class': 'form'}}) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+  </div>
+  
+ 
+
+{% endblock %}
