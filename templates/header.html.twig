@@ -26,18 +26,18 @@
         {% endif %}
         
       {# ============== #}
-        {# <li class="nav-item active">
+        <li class="nav-item active">
           <a class="nav-link" href="{{ path('register') }}">ユーザー登録</a>
-        </li>
+        </li> 
         {% if is_granted('ROLE_USER') %}
-        <li class="nav-item">
+        {# <li class="nav-item">
           <a class="nav-link" href="{{ path('logout') }}">ログアウト</a>
-        </li>
+        </li> #}
         {% else %}
-        <li class="nav-item">
+        {# <li class="nav-item">
           <a class="nav-link" href="{{ path('login') }}">ログイン</a>
-        </li>
-        {% endif %} #}
+        </li> #}
+        {% endif %}
 
         {% if userData == null %}
         {% else %}
